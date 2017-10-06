@@ -249,7 +249,7 @@ class Swiftris {
                 }
                 block.row = newRow
                 blockArray[column, row] = nil
-                blockArray[column, row] = block
+                blockArray[column, newRow] = block
                 fallenBlocksArray.append(block)
             }
             if fallenBlocksArray.count > 0 {
