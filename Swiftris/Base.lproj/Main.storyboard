@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,6 +75,7 @@
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="hAK-jY-qc8" appends="YES" id="CRX-6P-lP6"/>
                             <outletCollection property="gestureRecognizers" destination="ce1-pd-yIN" appends="YES" id="pi8-MF-La6"/>
+                            <outletCollection property="gestureRecognizers" destination="Jkm-0I-oVN" appends="YES" id="h6Z-Ug-ggD"/>
                         </connections>
                     </view>
                     <connections>
@@ -96,7 +97,6 @@
                 <swipeGestureRecognizer direction="down" id="Jkm-0I-oVN">
                     <connections>
                         <action selector="didSwipe:" destination="BV1-FR-VrT" id="12k-UK-VSw"/>
-                        <outlet property="delegate" destination="3se-qz-xqx" id="8qK-UA-Hj8"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

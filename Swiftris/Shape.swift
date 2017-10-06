@@ -30,8 +30,6 @@ enum Orientation: Int, CustomStringConvertible {
         return Orientation(rawValue: Int(arc4random_uniform(NumOrientations)))!
     }
     
-    // #1
-    
     static func rotate(orientation:Orientation, clockwise: Bool) -> Orientation {
         var rotated = orientation.rawValue + (clockwise ? 1 : -1)
         if rotated > Orientation.TwoSeventy.rawValue {
@@ -193,19 +191,19 @@ class Shape: Hashable, CustomStringConvertible {
         switch Int(arc4random_uniform(NumShapeTypes)) {
     // #4
         case 0:
-            return SquareShape(column:startingColumn, row:startingRow)
+            return SquareShape(column:startingColumn, row:startingRow, color:BlockColor.Yellow, orientation:Orientation.Zero)
         case 1:
-            return SquareShape(column:startingColumn, row:startingRow)
+            return LineShape(column:startingColumn, row:startingRow, color:BlockColor.Teal, orientation:Orientation.Zero)
         case 2:
-            return TShape(column:startingColumn, row:startingRow)
+            return TShape(column:startingColumn, row:startingRow, color:BlockColor.Purple, orientation:Orientation.Zero)
         case 3:
-            return LShape(column:startingColumn, row:startingRow)
+            return LShape(column:startingColumn, row:startingRow, color:BlockColor.Orange, orientation:Orientation.Zero)
         case 4:
-            return JShape(column:startingColumn, row:startingRow)
+            return JShape(column:startingColumn, row:startingRow, color:BlockColor.Blue, orientation:Orientation.Zero)
         case 5:
-            return SShape(column:startingColumn, row:startingRow)
+            return SShape(column:startingColumn, row:startingRow, color:BlockColor.Green, orientation:Orientation.Zero)
         default:
-            return ZShape(column:startingColumn, row:startingRow)
+            return ZShape(column:startingColumn, row:startingRow, color:BlockColor.Red, orientation:Orientation.Zero)
         }
     }
 }

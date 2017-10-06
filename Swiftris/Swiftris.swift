@@ -104,6 +104,11 @@ class Swiftris {
             shape.lowerShapeByOneRow()
         }
         shape.raiseShapeByOneRow()
+        if detectIllegalPlacement() {
+            endGame()
+        } else {
+            settleShape()
+        }
         delegate?.gameShapeDidDrop(swiftris: self)
     }
     
