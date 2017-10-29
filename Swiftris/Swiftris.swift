@@ -39,6 +39,10 @@ protocol SwiftrisDelegate {
     
     //Invoked when the game has reached a new level
     func gameDidLevelUp(swiftris: Swiftris)
+    
+    //Invoked when the game has paused
+    func gameDidTogglePause(swiftris: Swiftris)
+    
 }
 
 class Swiftris {
@@ -68,7 +72,6 @@ class Swiftris {
         nextShape = Shape.random(startingColumn: PreviewColumn, startingRow: PreviewRow)
         fallingShape?.moveTo(column: StartingColumn, row: StartingRow)
         
-// #1
         guard detectIllegalPlacement() == false else {
             nextShape = fallingShape
             nextShape!.moveTo(column:PreviewColumn, row: PreviewRow)
@@ -112,7 +115,7 @@ class Swiftris {
         delegate?.gameShapeDidDrop(swiftris: self)
     }
     
-    // #5
+
     func letShapeFall() {
         guard let shape = fallingShape else {
             return
@@ -183,7 +186,7 @@ class Swiftris {
         delegate?.gameShapeDidLand(swiftris: self)
     }
     
-    // #9
+    
     func detectTouch() -> Bool {
         guard let shape = fallingShape else {
             return false
@@ -204,7 +207,7 @@ class Swiftris {
         delegate?.gameDidEnd(swiftris: self)
     }
     
-// #10
+
     func removeCompletedLines() -> (linesRemoved: Array<Array<Block>>, fallenBlocks: Array<Array<Block>>) {
         var removedLines = Array<Array<Block>>()
         for row in (1..<NumRows).reversed() {
@@ -225,12 +228,11 @@ class Swiftris {
             }
         }
         
-        // #12
+
         if removedLines.count == 0 {
             return ([], [])
         }
         
-        // # 13
         
         let pointsEarned = removedLines.count * PointsPerLine * level
         score += pointsEarned
@@ -243,7 +245,7 @@ class Swiftris {
         for column in 0..<NumColumns {
             var fallenBlocksArray = Array<Block>()
             
-        // #14
+
             for row in (1..<removedLines[0][0].row).reversed() {
                 guard let block = blockArray[column, row] else {
                     continue
@@ -279,4 +281,11 @@ class Swiftris {
         }
         return allBlocks
     }
+    
+    
+    func togglePause() {
+        delegate?.gameDidTogglePause(swiftris: self)
+    }
+    
+    
 }

@@ -50,10 +50,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     }
 
     @IBAction func didPan(_ sender: UIPanGestureRecognizer) {
-    // #2
         let currentPoint = sender.translation(in: self.view)
         if let originalPoint = panPointReference {
-            // #3
             if abs(currentPoint.x - originalPoint.x) > (BlockSize * 0.9) {
                 if sender.velocity(in: self.view).x > CGFloat(0) {
                     swiftris.moveShapeRight()
@@ -77,18 +75,24 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     @IBAction func didTap(_ sender: UITapGestureRecognizer) {
         swiftris.rotateShape()
     }
+    
 
-    // #15
+    @IBAction func togglePause(_ sender: UIButton)
+    {
+        swiftris.togglePause()
+    }
+    
+
     func didTick() {
         swiftris.letShapeFall()
     }
     
-    // #5
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGesturerecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
     
-    // #6
+
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer is UISwipeGestureRecognizer {
             if otherGestureRecognizer is UIPanGestureRecognizer {
@@ -118,7 +122,6 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
     func gameDidBegin(swiftris: Swiftris) {
         
-        levelLabel.text = "\(swiftris.level)"
         scoreLabel.text = "\(swiftris.score)"
         
         scene.tickLengthMillis = TickLengthLevelOne
@@ -180,5 +183,13 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
     func gameShapeDidMove(swiftris: Swiftris) {
         scene.redrawShape(shape: swiftris.fallingShape!) {}
+    }
+    
+    func gameDidTogglePause(swiftris: Swiftris) {
+        if (scene.isTicking()){
+            scene.stopTicking()
+        } else {
+            scene.startTicking()
+        }
     }
 }

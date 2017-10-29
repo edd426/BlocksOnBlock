@@ -167,6 +167,14 @@ class GameScene: SKScene {
         lastTick = nil
     }
     
+    func isTicking() -> Bool {
+        if (lastTick == nil){
+            return false
+        } else {
+            return true
+        }
+    }
+    
     // #9
     
     func pointForColumn(column: Int, row: Int) -> CGPoint {
