@@ -11,7 +11,7 @@ import GameplayKit
 
 
 // #7
-let BlockSize:CGFloat = 20.0
+let BlockSize:CGFloat = 30.0
 
 // #1
 let TickLengthLevelOne = TimeInterval(600)
