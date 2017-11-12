@@ -11,7 +11,7 @@ import GameplayKit
 
 
 // #7
-let BlockSize:CGFloat = 30.0
+let BlockSize:CGFloat = 28.0
 
 // #1
 let TickLengthLevelOne = TimeInterval(600)
@@ -30,7 +30,7 @@ class GameScene: SKScene {
     
     let gameLayer = SKNode()
     let shapeLayer = SKNode()
-    let LayerPosition = CGPoint(x: 6, y: -6)
+    let LayerPosition = CGPoint(x: 5, y: -40)
     
     // #2
     var tick:(() -> ())?
@@ -152,13 +152,11 @@ class GameScene: SKScene {
         let timePassed = lastTick.timeIntervalSinceNow * -1000
         if timePassed > tickLengthMillis {
             self.lastTick = NSDate()
-            
             tick?()
         }
         
     }
     
-    // #4
     func startTicking() {
         lastTick = NSDate()
     }
@@ -197,7 +195,7 @@ class GameScene: SKScene {
             
             // # 11
             
-            sprite.position = pointForColumn(column: block.column, row:block.row - 2)
+            sprite.position = pointForColumn(column: block.column, row:block.row + 2)
             shapeLayer.addChild(sprite)
             block.sprite = sprite
             // animatation
