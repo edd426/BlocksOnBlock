@@ -14,7 +14,7 @@ let NumRows = 20
 let StartingColumn = 4
 let StartingRow = 0
 
-let PreviewColumn = 11
+let PreviewColumn = 10
 let PreviewRow = 0
 
 let PointsPerLine = 10

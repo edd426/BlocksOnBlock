@@ -158,7 +158,7 @@ class Shape: Hashable, CustomStringConvertible {
     
     
     final func raiseShapeByOneRow() {
-        shiftBy(columns: 0, rows: 1)
+        shiftBy(columns: 0, rows: -1)
     }
     
     
